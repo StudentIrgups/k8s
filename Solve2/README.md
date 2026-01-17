@@ -1,36 +1,21 @@
+## kubectl get pods -n netology
+
+![alt text](images/0.png)
+
+[pod](./hello-pod.yml)
+
+[service](./service.yml)
+
 # Task 1
-## 1 
+## Port-forward to pod netology-web:
     
 ![alt text](images/1.png)
 
-## 2
-    2.1. 
-    
 ![alt text](images/2.png)
-    
-    2.2. 
-
-![alt text](images/3.png)
-
-## 3
-
-![alt text](images/4.png)
 
 # Task 2
+## Port-forward to pod netology-web:
+    
+![alt text](images/3.png)
 
-## 1
-    1.1
-
-![alt text](images/5.png)
-
-    1.2
-
-![alt text](images/6.png)
-
-## 2
-
-![alt text](images/7.png)
-
-## 3
-
-![alt text](images/8.png)
+![alt text](images/4.png)
