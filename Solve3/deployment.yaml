@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nm-deployment
+  labels:
+    app: nginx-multitool
+  namespace: netology
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-multitool
+  template:
+    metadata:
+      labels:
+        app: nginx-multitool
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+          - containerPort: 80
+      - name: multitool
+        image: wbitt/network-multitool
+        ports:
+          - containerPort: 81

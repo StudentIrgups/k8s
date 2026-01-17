@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: pod
+  name: pod-apart
+  namespace: netology  
+spec:
+  containers:
+  - image: wbitt/network-multitool
+    imagePullPolicy: IfNotPresent
+    name: pod-apart
+    ports:
+      - containerPort: 81

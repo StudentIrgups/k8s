@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wait-deployment
+  labels:
+    app: to-wait
+  namespace: netology
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: to-wait
+  template:
+    metadata:
+      labels:
+        app: to-wait
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+          - containerPort: 80
+      initContainers:
+      - name: init-service
+        image: busybox:1.28
+        command: ['sh', '-c', "until nslookup netology-svc-wait.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for myservice; sleep 2; done"]
