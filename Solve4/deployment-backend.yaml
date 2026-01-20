@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-backend
+  labels:
+    app: dep-backend
+  namespace: netology
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dep-backend
+  template:
+    metadata:
+      labels:
+        app: dep-backend
+    spec:
+      containers:
+      - name: multitool
+        image: wbitt/network-multitool
+        ports:
+          - containerPort: 80

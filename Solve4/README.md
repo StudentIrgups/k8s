@@ -1,14 +1,12 @@
-task 1 [deployment](./deployment.yaml)
-
-task 1 [service](./service.yml)
-
-task 1 [podApart](./pod.yml)
-
-task 2 [deployment_w](./deployment_w.yml)
-
-task 2 [service_w](./service_w.yml)
-
 # Task 1
+
+## Manifests:
+
+[deployment](./deployment.yaml)
+
+[service](./service.yml)
+
+[service-node-port](./service-nodePort.yml)
     
 ![alt text](images/0.png)
 
@@ -17,5 +15,17 @@ task 2 [service_w](./service_w.yml)
 ![alt text](images/2.png)
 
 # Task 2
-    
+
+## Manifests:
+
+[deployment-frontend](./deployment-frontend.yaml)
+
+[deployment-backend](./deployment-backend.yaml)
+
+[service-frontend](./service-frontend.yml)
+
+[service-backend](./service-backend.yml)
+
+[ingress](./ingress.yml)
+
 ![alt text](images/3.png)

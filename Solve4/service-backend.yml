@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-backend
+  namespace: netology  
+spec:
+  ports:
+    - name: web-backend
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: dep-backend

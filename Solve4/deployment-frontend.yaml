@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-frontend
+  labels:
+    app: dep-frontend
+  namespace: netology
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dep-frontend
+  template:
+    metadata:
+      labels:
+        app: dep-frontend
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+          - containerPort: 80
