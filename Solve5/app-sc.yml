@@ -1,17 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: data-exchange
-  namespace: netology
+  name: data-exchange-sc
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: data-exchange-lable
+      app: dep-label
   template:
     metadata:
       labels:
-        app: data-exchange-lable
+        app: dep-label
     spec:
       containers:
       - name: busybox
@@ -20,20 +19,19 @@ spec:
         args: 
           - while :; do 
             echo $(date) | tee -a /output/file; 
-            sleep 300;
-            done
+            sleep 5;
+            done        
         volumeMounts:
         - name: vol
           mountPath: /output
-      - name: multitool2
+      - name: multitool
         image: wbitt/network-multitool
-        ports:
-          - containerPort: 80
         command: ["/bin/sh", "-c"]
-        args: ["tail -f /input/file"] 
+        args: ["tail -f /input/file"]
         volumeMounts:
         - name: vol
           mountPath: /input
       volumes:
       - name: vol
-        emptyDir: {} 
+        persistentVolumeClaim:
+          claimName: test-pvc

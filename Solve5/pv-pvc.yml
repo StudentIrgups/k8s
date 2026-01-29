@@ -1,0 +1,65 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: test-storage
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /tmp/test-storage
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: test-pvc
+spec:
+  volumeName: test-storage
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-exchange-pvc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: strg-label
+  template:
+    metadata:
+      labels:
+        app: strg-label
+    spec:
+      containers:
+      - name: busybox
+        image: busybox
+        command: ["/bin/sh", "-c"] 
+        args: 
+          - while :; do 
+            echo $(date) | tee -a /output/file; 
+            sleep 5;
+            done
+        volumeMounts:
+        - name: vol
+          mountPath: /output
+      - name: busybox-two
+        image: busybox
+        command: ["/bin/sh", "-c"]
+        args: ["tail -f /input/file"] 
+        volumeMounts:
+        - name: vol
+          mountPath: /input
+      volumes:
+      - name: vol
+        persistentVolumeClaim:
+          claimName: test-pvc
