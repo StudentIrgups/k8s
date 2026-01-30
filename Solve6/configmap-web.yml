@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config 
+  namespace: netology
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Страница из ConfigMap</title> 
+      <meta charset="UTF-8">
+    </head>
+    <body>
+      <h1>Привет от Kubernetes!</h1> 
+    </body>
+    </html>
