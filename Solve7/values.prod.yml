@@ -1,0 +1,4 @@
+image:
+  name: nginx  
+  pullPolicy: IfNotPresent
+  tag: latest

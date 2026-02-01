@@ -1,0 +1,29 @@
+replicaCount: 1
+
+labels:
+  app: nginx-app
+  service: svc-frontend
+
+image:
+  name: nginx  
+  pullPolicy: IfNotPresent
+  tag: 1.14.2
+
+service:  
+  enabled: true
+  name: svc-frontend
+
+ingress:
+  enabled: true
+  annotations: 
+    nginx.ingress.kubernetes.io/rewrite-target: "/"
+
+volumeMounts: 
+  nginx: /usr/share/nginx/html/
+
+namespace:
+  name: netology
+
+path:
+  name: /  
+

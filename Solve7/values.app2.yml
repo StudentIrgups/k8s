@@ -1,0 +1,9 @@
+labels:
+  app: nginx-app2
+  service: svc-frontend2
+
+namespace:
+  name: app2
+
+path:
+  name: /app2  
