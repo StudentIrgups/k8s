@@ -28,4 +28,4 @@
 
 Canary 10% of traffic:
 
-![alt text](4.png)
+![alt text](./images/4.png)
