@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-one
+  namespace: netology
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Страница из ConfigMap</title> 
+      <meta charset="UTF-8">
+    </head>
+    <body>
+      <h1>Version nginx is 1.19</h1> 
+    </body>
+    </html>

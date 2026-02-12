@@ -1,10 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: tst-ingress
+  name: canary-ingress
   annotations:  
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "100" 
 spec:
+  ingressClassName: nginx 
   rules:
   - http:
       paths:
@@ -12,13 +15,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: netology-svc-dep
+            name: svc
             port:
-              name: web
-      - path: /api
-        pathType: Prefix
-        backend:
-          service:
-            name: netology-svc-dep
-            port:
-              name: mtool
+              number: 80

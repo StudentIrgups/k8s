@@ -4,14 +4,28 @@
 
 # Task 2
 
+[Manifests](./)
 
+Развернули приложения:
 
 ![alt text](./images/0.png)
 
+Накатили версию 1.20:
+
 ![alt text](./images/1.png)
+
+Накатили версию 1.333(не существует):
 
 ![alt text](./images/2.png)
 
+Откатили версию 1.333, так как поды не поднялись:
+
 ![alt text](./images/3.png)
 
-![alt text](./images/4.png)
+# Task 3
+
+[Manifests](./task3/)
+
+Canary 10% of traffic:
+
+![alt text](4.png)
